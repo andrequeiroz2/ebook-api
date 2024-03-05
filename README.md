@@ -15,7 +15,3 @@ $ cargo run
 ## help
 
 - get: localhost:8080/help
-
-```bash
-$ curl --location 'localhost:8080/help'
-```
