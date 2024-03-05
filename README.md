@@ -6,6 +6,11 @@ This repository contains a RESTful API built with Rust using the Actix-web frame
 
 - Rust ([installation guide](https://www.rust-lang.org/tools/install))
 
+## .env
+- Create a .env file at the root of the project, replacing <user>, <pass>, <host> 
+
+- MONGOURI="mongodb+srv://<user>:<pass>@<host>/?retryWrites=true&w=majority"
+
 ## Run
 
 ```bash
