@@ -1,0 +1,16 @@
+version: '3.0'
+
+services:
+  ebookapp:
+    container_name: ebookapp
+    image: ebook:latest
+    restart: always
+    ports:
+      - "8080:8080"
+    networks:
+      - ebook_network
+
+networks: 
+  ebook_network:
+    name: 'ebook_network'
+    driver: bridge

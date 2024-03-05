@@ -70,12 +70,16 @@ impl RequestFilter {
         let condition = &mut request_filter.condition;
         let mut condition_element: Vec<Document> = Vec::new();
 
-        println!("operator_logical:{}", operator_logical);
-
         for cond in condition.iter_mut(){
 
             let cond_field = format!("{:?}", cond.field);
-            let cond_comparison = format!("${:?}", cond.operator_comparison);
+            // let cond_comparison = format!("${:?}", cond.operator_comparison);
+            
+            let cond_comparison = if format!("{:?}", cond.operator_comparison) == String::from("in_"){
+                format!("${:?}", cond.operator_comparison).replace("_", "")
+            }else{
+                format!("${:?}", cond.operator_comparison)
+            };
             
             let cond_value_teste: bson::Bson = match cond.value.clone() {
                 Value::TypeInt(v) => bson!(v),

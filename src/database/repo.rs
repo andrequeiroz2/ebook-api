@@ -31,7 +31,7 @@ impl MongoDB{
             Err(err)=> format!("connection error: {}", err.to_string()),
             
         };
-
+        
         let client = Client::with_uri_str(uri).await.unwrap();
 
         let db = client.database("book_api");
