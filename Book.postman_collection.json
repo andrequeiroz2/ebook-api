@@ -1,0 +1,464 @@
+{
+	"info": {
+		"_postman_id": "f2c3a965-ab4a-4b3d-9c1b-14de79ae6570",
+		"name": "Book",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "27448165"
+	},
+	"item": [
+		{
+			"name": "Create Book",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\":\"Rust\",\n    \"genre\":\"Development\",\n    \"pages\":560,\n    \"author\": [\"Graydon Hoare\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/book"
+			},
+			"response": [
+				{
+					"name": "Create Book",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\":\"Rust\",\n    \"genre\":\"Development\",\n    \"pages\":560,\n    \"author\": [\"Graydon Hoare\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/book"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "content-length",
+							"value": "73"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						},
+						{
+							"key": "date",
+							"value": "Tue, 05 Mar 2024 03:00:35 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"result\": true,\n    \"data\": {\n        \"insertedId\": {\n            \"$oid\": \"65e68ad36faa243fcc64f5b9\"\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Create Books",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n\t\t{\n\t\t   \"title\":\"Rust\",\n\t\t   \"genre\":\"Development\",\n\t\t   \"pages\":560,\n\t\t   \"author\": [\"Graydon Hoare\"]\n\t            },\n\t\t{\n\t\t   \"title\":\"Python\",\n\t\t   \"genre\":\"Development\",\n\t\t   \"pages\":1300,\n\t\t   \"author\": [\"Marie\", \"Andre\"]\n\t            }\n            ]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/books"
+			},
+			"response": [
+				{
+					"name": "Create Books",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n\t\t{\n\t\t   \"title\":\"Rust\",\n\t\t   \"genre\":\"Development\",\n\t\t   \"pages\":560,\n\t\t   \"author\": [\"Graydon Hoare\"]\n\t            },\n\t\t{\n\t\t   \"title\":\"Python\",\n\t\t   \"genre\":\"Development\",\n\t\t   \"pages\":1300,\n\t\t   \"author\": [\"Marie\", \"Andre\"]\n\t            }\n            ]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/books"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "content-length",
+							"value": "120"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						},
+						{
+							"key": "date",
+							"value": "Tue, 05 Mar 2024 02:58:59 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"result\": true,\n    \"data\": {\n        \"insertedIds\": {\n            \"0\": {\n                \"$oid\": \"65e68a736faa243fcc64f5b7\"\n            },\n            \"1\": {\n                \"$oid\": \"65e68a736faa243fcc64f5b8\"\n            }\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Book",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"operator_logical\": \"and\",\n    \"condition\": [\n        {\n            \"field\":\"pages\", \n            \"operator_comparison\":\"in_\",\n            \"value\":[1250, 1233]\n        }\n    ]\n}\n\n\n\n\n\n// {\n//     \"operator_logical\": \"and\",\n//     \"condition\": [\n//         {\n//             \"field\":\"pages\", \n//             \"operator_comparison\":\"eq\",\n//             \"value\":1250\n//         },\n//         {\n//             \"field\":\"genre\", \n//             \"operator_comparison\":\"eq\",\n//             \"value\": \"technology\"\n//          }\n//     ]\n// }\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/book_filter",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"book_filter"
+					],
+					"query": [
+						{
+							"key": "field",
+							"value": "pages",
+							"disabled": true
+						},
+						{
+							"key": "operator_logical",
+							"value": "and",
+							"disabled": true
+						},
+						{
+							"key": "condition",
+							"value": "[{field:pages, operator_comparison:gt}]",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Book",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"operator_logical\": \"and\",\n    \"condition\": [\n        {\n            \"field\":\"pages\", \n            \"operator_comparison\":\"in_\",\n            \"value\":[1250, 1233]\n        }\n    ]\n}\n\n\n\n\n\n// {\n//     \"operator_logical\": \"and\",\n//     \"condition\": [\n//         {\n//             \"field\":\"pages\", \n//             \"operator_comparison\":\"eq\",\n//             \"value\":1250\n//         },\n//         {\n//             \"field\":\"genre\", \n//             \"operator_comparison\":\"eq\",\n//             \"value\": \"technology\"\n//          }\n//     ]\n// }\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/book/65e68a736faa243fcc64f5b7"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "content-length",
+							"value": "110"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						},
+						{
+							"key": "date",
+							"value": "Tue, 05 Mar 2024 03:08:03 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"result\": true,\n    \"data\": {\n        \"id\": null,\n        \"title\": \"Rust\",\n        \"genre\": \"Development\",\n        \"pages\": 560,\n        \"author\": [\n            \"Graydon Hoare\"\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Books",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"operator_logical\": \"and\",\n    \"condition\": [\n        {\n            \"field\":\"pages\", \n            \"operator_comparison\":\"in_\",\n            \"value\":[1250, 1233]\n        }\n    ]\n}\n\n\n\n\n\n// {\n//     \"operator_logical\": \"and\",\n//     \"condition\": [\n//         {\n//             \"field\":\"pages\", \n//             \"operator_comparison\":\"eq\",\n//             \"value\":1250\n//         },\n//         {\n//             \"field\":\"genre\", \n//             \"operator_comparison\":\"eq\",\n//             \"value\": \"technology\"\n//          }\n//     ]\n// }\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/books"
+			},
+			"response": [
+				{
+					"name": "Get Books",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"operator_logical\": \"and\",\n    \"condition\": [\n        {\n            \"field\":\"pages\", \n            \"operator_comparison\":\"in_\",\n            \"value\":[1250, 1233]\n        }\n    ]\n}\n\n\n\n\n\n// {\n//     \"operator_logical\": \"and\",\n//     \"condition\": [\n//         {\n//             \"field\":\"pages\", \n//             \"operator_comparison\":\"eq\",\n//             \"value\":1250\n//         },\n//         {\n//             \"field\":\"genre\", \n//             \"operator_comparison\":\"eq\",\n//             \"value\": \"technology\"\n//          }\n//     ]\n// }\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/books"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "content-length",
+							"value": "633"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						},
+						{
+							"key": "date",
+							"value": "Tue, 05 Mar 2024 03:09:31 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"result\": true,\n    \"data\": [\n        {\n            \"id\": null,\n            \"title\": \"Rust Doc\",\n            \"genre\": \"technology\",\n            \"pages\": 250,\n            \"author\": [\n                \"Andre\",\n                \"Maria\",\n                \"Pedro\"\n            ]\n        },\n        {\n            \"id\": null,\n            \"title\": \"Rust Advance\",\n            \"genre\": \"technology\",\n            \"pages\": 1250,\n            \"author\": [\n                \"Deby\"\n            ]\n        },\n        {\n            \"id\": null,\n            \"title\": \"La Vita\",\n            \"genre\": \"Romance\",\n            \"pages\": 560,\n            \"author\": [\n                \"Deby\"\n            ]\n        },\n        {\n            \"id\": null,\n            \"title\": \"The Cool\",\n            \"genre\": \"Poema\",\n            \"pages\": 560,\n            \"author\": [\n                \"Lorem\"\n            ]\n        },\n        {\n            \"id\": null,\n            \"title\": \"Rust\",\n            \"genre\": \"Development\",\n            \"pages\": 560,\n            \"author\": [\n                \"Graydon Hoare\"\n            ]\n        },\n        {\n            \"id\": null,\n            \"title\": \"Python\",\n            \"genre\": \"Development\",\n            \"pages\": 1300,\n            \"author\": [\n                \"Marie\",\n                \"Andre\"\n            ]\n        },\n        {\n            \"id\": null,\n            \"title\": \"Rust\",\n            \"genre\": \"Development\",\n            \"pages\": 560,\n            \"author\": [\n                \"Graydon Hoare\"\n            ]\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Update Book",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": "localhost:8080/book/65e68a736faa243fcc64f5b7"
+			},
+			"response": [
+				{
+					"name": "Update Book",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n    \"title\": \"A Hora da Estrela\",\n    \"genre\": \"Poema\",\n    \"pages\": 250,\n    \"author\": [\n        \"Clarice Lispector\",\n        \"Any\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/book/65e68a736faa243fcc64f5b7"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "content-length",
+							"value": "77"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						},
+						{
+							"key": "date",
+							"value": "Tue, 05 Mar 2024 03:13:55 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"result\": true,\n    \"data\": {\n        \"matchedCount\": 1,\n        \"modifiedCount\": 1,\n        \"upsertedId\": null\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Book Filter",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"operator_logical\": \"and\",\n    \"condition\": [\n        {\n            \"field\":\"pages\", \n            \"operator_comparison\":\"in_\",\n            \"value\":[1250, 1233]\n        }\n    ]\n}\n\n\n\n\n\n// {\n//     \"operator_logical\": \"and\",\n//     \"condition\": [\n//         {\n//             \"field\":\"pages\", \n//             \"operator_comparison\":\"eq\",\n//             \"value\":1250\n//         },\n//         {\n//             \"field\":\"genre\", \n//             \"operator_comparison\":\"eq\",\n//             \"value\": \"technology\"\n//          }\n//     ]\n// }\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/book_filter",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"book_filter"
+					],
+					"query": [
+						{
+							"key": "field",
+							"value": "pages",
+							"disabled": true
+						},
+						{
+							"key": "operator_logical",
+							"value": "and",
+							"disabled": true
+						},
+						{
+							"key": "condition",
+							"value": "[{field:pages, operator_comparison:gt}]",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Book Filter",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"operator_logical\": \"and\",\n    \"condition\": [\n        {\n            \"field\":\"pages\", \n            \"operator_comparison\":\"in_\",\n            \"value\":[1250, 1233]\n        }\n    ]\n}\n\n\n\n\n\n// {\n//     \"operator_logical\": \"and\",\n//     \"condition\": [\n//         {\n//             \"field\":\"pages\", \n//             \"operator_comparison\":\"eq\",\n//             \"value\":1250\n//         },\n//         {\n//             \"field\":\"genre\", \n//             \"operator_comparison\":\"eq\",\n//             \"value\": \"technology\"\n//          }\n//     ]\n// }\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/book_filter",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"book_filter"
+							],
+							"query": [
+								{
+									"key": "field",
+									"value": "pages",
+									"disabled": true
+								},
+								{
+									"key": "operator_logical",
+									"value": "and",
+									"disabled": true
+								},
+								{
+									"key": "condition",
+									"value": "[{field:pages, operator_comparison:gt}]",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "content-length",
+							"value": "111"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						},
+						{
+							"key": "date",
+							"value": "Tue, 05 Mar 2024 02:03:42 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"result\": true,\n    \"data\": [\n        {\n            \"id\": null,\n            \"title\": \"Rust Advance\",\n            \"genre\": \"technology\",\n            \"pages\": 1250,\n            \"author\": [\n                \"Deby\"\n            ]\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete Book",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "localhost:8080/book/65e68a736faa243fcc64f5b7"
+			},
+			"response": [
+				{
+					"name": "Delete Book",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": "localhost:8080/book/65e68a736faa243fcc64f5b7"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "content-length",
+							"value": "41"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						},
+						{
+							"key": "date",
+							"value": "Tue, 05 Mar 2024 03:22:08 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"result\": true,\n    \"data\": {\n        \"deletedCount\": 1\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Help",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8080/help"
+			},
+			"response": []
+		}
+	]
+}
