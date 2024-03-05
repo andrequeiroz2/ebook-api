@@ -3,8 +3,11 @@ use actix_web::{
     get,
     put,
     web::{Data, Json, Path}, 
-    Responder, delete
+    Responder, 
+    delete,
+    Result
 };
+use actix_files::NamedFile;
 use crate::book::book_model::Book;
 use crate::database::repo::MongoDB;
 use crate::book::book_filter::RequestFilter;
@@ -109,4 +112,15 @@ pub async fn book_filter(db: Data<MongoDB>, json: Json<RequestFilter>) -> impl R
    }
     
     
+}
+
+#[get("/help")]
+pub async fn help()-> Result<NamedFile>{
+    let file = NamedFile::open("src/book/ebook_help.pdf");
+
+    match file{
+        Ok(f) => Ok(f),
+
+        Err(err) => Err(err)?
+    }
 }

@@ -2,7 +2,7 @@ mod book;
 mod database;
 use database::repo::MongoDB;
 use actix_web::{web::{Data, JsonConfig}, HttpServer, App, error, HttpResponse,};
-use book::book_route::{create, create_many, find_one, find_all, update_one, delete_one, book_filter};
+use book::book_route::{create, create_many, find_one, find_all, update_one, delete_one, book_filter, help};
 use book::book_response::BookGenericResponse;
 
 mod midlleware;
@@ -36,6 +36,7 @@ async fn main() -> std::io::Result<()>{
             .service(update_one)
             .service(delete_one)
             .service(book_filter)
+            .service(help)
 
     })
     .bind(("localhost", 8080))?
